@@ -1,0 +1,21 @@
+class Solution:
+    def countAndSay(self, n: int) -> str:
+        if n == 1:                                   #base case
+            return "1"
+        No = "1"
+        for x in range(2, n + 1):
+            new_no = ""
+            j , i = 0, 0
+            while j < len(No):                       #looping in the previous no.
+                a = No[j]
+                times = 0
+                while i < len(No) and No[i] == a:    #looping untill we find different no
+                    times += 1
+                    i += 1
+                new_no += str(times) + a
+                if j != i:
+                    j = i
+                else:
+                    j += 1
+            No = new_no
+        return No
